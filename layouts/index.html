@@ -3,15 +3,22 @@
     <!-- Hero -->
     <div class="hero row">
         <div class="col position-relative py-lg-7{{ if not .Site.Params.homepageImage }} py-7{{ else }} pb-5{{ end }}">
+            <h1 class="display-4">{{ .Site.Title }}</h1>
+            {{- with .Site.Params.description -}}
+                <h3 class="font-weight-normal">{{ . | safeHTML }}</h3>
+            {{- end -}}
+            {{- with .Site.Params.quickHomePageButton -}}
+                <h5 class="font-weight-normal">
+                    <a style="outline : none;" href="{{ $.Site.Params.quickHomePageButtonAnchorLink }}">
+                        <button style="border: white; border-radius: 10px;" class="text-muted font-weight-bold">✨{{ . | safeHTML }}✨</button>
+                    </a>
+                </h5>
+            {{- end -}}
+
             {{- with .Site.Params.homepageImage -}}
                 <div class="homepage-image">
                     <img src="{{ . | relURL }}" class="img-fluid">
                 </div>
-            {{- end -}}
-
-            <h1 class="display-4">{{ .Site.Title }}</h1>
-            {{- with .Site.Params.description -}}
-                <h3 class="font-weight-normal">{{ . | safeHTML }}</h3>
             {{- end -}}
 
             <div style="margin: 100px;"></div>
